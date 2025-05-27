@@ -10,13 +10,157 @@ In this lab, I create a simple home Security Operations Center in Azure. I set u
 
 <h2>Environments Used </h2>
 
-- <b>Windows 10</b> (22H2)
+- <b>Windows 10 Pro</b> (22H2)
 
 <h2>Walk-through:</h2>
 
 <p align="center">
-Booting up with Server 2019: <br/>
+Creating Resource Group: <br/>
 
-Setting up the first VirtualBox with Server 19. This will act as the Domain Controller.
+<p align="center">
+  <img width="700" height="900" src="https://github.com/user-attachments/assets/756aa4c1-3872-4c10-a0ee-ccf668ac3299">
+</p>
 
-![Image](https://github.com/user-attachments/assets/bfc1e23f-4edd-48ec-a3fd-5a716c1db07a)
+<p align="center">
+Creating Virtual Network: <br/>
+
+<p align="center">
+  <img width="700" height="900" src="https://github.com/user-attachments/assets/6b6bb127-43ac-498a-853c-bcade58df13b">
+</p>
+
+<p align="center">
+Creating Virtual Machine: <br/>
+
+<p align="center">
+  <img width="900" height="900" src="https://github.com/user-attachments/assets/c8f6a709-3e9d-4987-ae4f-8e26b567e6bb">
+</p>
+
+<p align="center">
+Creating Inbound Security Rule to Let Anyone In: <br/>
+
+![Image](https://github.com/user-attachments/assets/cca36417-137f-4319-a93f-4c67e0c3068e)
+
+<p align="center">
+Connect to Virtual Machine: <br/>
+
+![Image](https://github.com/user-attachments/assets/c7a23df0-3076-4ba0-900e-3ef3d5600dd7)
+
+<p align="center">
+Turn Off the Windows Firewall in the Virtual Machine: <br/>
+
+![Image](https://github.com/user-attachments/assets/ae4c3da7-087b-4f0e-ac3e-6e6fc012b72c)
+
+<p align="center">
+Checking Connection to Public IP: <br/>
+
+![Image](https://github.com/user-attachments/assets/59ab7ba4-2db2-4d82-8438-0545cde14023)
+
+<p align="center">
+Intentionally Failing to Login to Virtual Machine: <br/>
+
+<p align="center">
+<img width="495" height="600" src="https://github.com/user-attachments/assets/1b99fb62-8b5b-4870-9208-09fb102703e6">
+</p>
+
+<p align="center">
+Viewing Security Events: <br/>
+
+![Image](https://github.com/user-attachments/assets/80f34fcf-664f-4bce-8799-d869df9ea08f)
+
+<p align="center">
+See Logs where there were Failed Login Attempts: <br/>
+
+![Image](https://github.com/user-attachments/assets/7d52d606-7c35-48e2-a772-5a502e74122b)
+
+<p align="center">
+Creating Log Analytics Workspace to View Logs: <br/>
+
+<p align="center">
+<img width="600" height="800" src="https://github.com/user-attachments/assets/61b8e3e0-f362-49a6-94f9-6447319bd8a0">
+</p>
+
+<p align="center">
+Add Microsoft Sentinel to Workspace: <br/>
+
+![Image](https://github.com/user-attachments/assets/976d1ac7-d37d-48d9-a2ff-4309a9287664)
+
+<p align="center">
+Install Windows Security Event: <br/>
+
+![Image](https://github.com/user-attachments/assets/14beffba-9009-4ee1-9882-d0392f4a6211)
+
+<p align="center">
+Forward Logs into Log Analytics Workspace: <br/>
+
+![Image](https://github.com/user-attachments/assets/4919aa7e-b365-4148-b1af-3d3202b1d437)
+
+<p align="center">
+Create Data Collection Rule: <br/>
+
+<p align="center">
+<img width="800" height="900" src="https://github.com/user-attachments/assets/d6473132-5c79-408e-80eb-0af795081dfb">
+</p>
+
+<p align="center">
+Viewing Logs: <br/>
+
+![Image](https://github.com/user-attachments/assets/ee31de51-9644-4bb7-a7f6-39b73b9b2aaa)
+
+<p align="center">
+Using this File to Locate Where the IPs Originate from: <br/>
+
+<p align="center">
+<img width="600" height="900" src="https://github.com/user-attachments/assets/d48ea81f-3e8d-4de6-ac56-c54af3dd7206">
+</p>
+
+<p align="center">
+Putting Geoip Into Watchlist: <br/>
+
+![Image](https://github.com/user-attachments/assets/c1dfd8e4-c43c-459e-9006-2a04bcb81cb8)
+
+<p align="center">
+Wait for Geoip to Upload: <br/>
+
+![Image](https://github.com/user-attachments/assets/e2cf8ec9-d5ef-4a3d-83d4-0ed86c3cb46b)
+
+<p align="center">
+All Items Uploaded: <br/>
+
+![Image](https://github.com/user-attachments/assets/541f7faf-683b-4449-be9e-4eb01b94e0cb)
+
+<p align="center">
+Watchlist Uploaded into Azure: <br/>
+
+![Image](https://github.com/user-attachments/assets/44811019-0bf1-40e0-9bc1-b02f7f7b9551)
+
+<p align="center">
+Using Event ID 4625 to Identfy Failed Logins and Grab IP: <br/>
+
+![Image](https://github.com/user-attachments/assets/6e0418d0-1e62-4c98-bcc2-f02f2b211d84)
+
+<p align="center">
+Query to Find Location with Longitude and Latitude: <br/>
+
+![Image](https://github.com/user-attachments/assets/e3a6e3b5-f44a-46ae-aa68-0d60c9cb250d)
+
+<p align="center">
+Adding JSON to Workboook: <br/>
+
+![Image](https://github.com/user-attachments/assets/41a581fa-86ea-472e-a8a4-080cdea3003c)
+
+![Image](https://github.com/user-attachments/assets/5a2bc8a4-d8a8-4884-b81e-eea8805ce3bc)
+
+<p align="center">
+Map of Attacks: <br/>
+
+![Image](https://github.com/user-attachments/assets/37811764-45de-47a4-95c4-1d842650e216)
+
+<p align="center">
+After a Few Hours: <br/>
+
+![Image](https://github.com/user-attachments/assets/f67e23b7-4338-4471-8129-9b4f4cbe184d)
+
+<p align="center">
+After 24 Hours: <br/>
+
+![Image](https://github.com/user-attachments/assets/417878b0-c80d-42b2-8958-21c54cf2ce14)
