@@ -12,6 +12,10 @@ In this lab, I create a simple home Security Operations Center in Azure. I set u
 
 - <b>Windows 10 Pro</b> (22H2)
 
+<h2>Overview </h2>
+
+![Image](https://github.com/user-attachments/assets/bb93aa18-f894-4f5a-844f-a282d07cd092)
+
 <h2>Walk-through:</h2>
 
 <p align="center">
