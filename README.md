@@ -12,7 +12,7 @@ In this lab, I create a simple home Security Operations Center in Azure. I set u
 
 - <b>Windows 10 Pro</b> (22H2)
 
-<h2>Overview </h2>
+<h2>Overview:</h2>
 
 ![Image](https://github.com/user-attachments/assets/bb93aa18-f894-4f5a-844f-a282d07cd092)
 
@@ -42,25 +42,35 @@ Creating Virtual Machine: <br/>
 <p align="center">
 Creating Inbound Security Rule to Let Anyone In: <br/>
 
+Removing Remote Desktop Protocol. Literally letting ANY traffic inbound. 
+
 ![Image](https://github.com/user-attachments/assets/cca36417-137f-4319-a93f-4c67e0c3068e)
 
 <p align="center">
 Connect to Virtual Machine: <br/>
+
+Connecting to Virtual Machine with the IP Address of the VM I created. Pasting that IP into Remote Desktop Connection. 
 
 ![Image](https://github.com/user-attachments/assets/c7a23df0-3076-4ba0-900e-3ef3d5600dd7)
 
 <p align="center">
 Turn Off the Windows Firewall in the Virtual Machine: <br/>
 
+Turning off the firewalls to allow inbound connections.
+
 ![Image](https://github.com/user-attachments/assets/ae4c3da7-087b-4f0e-ac3e-6e6fc012b72c)
 
 <p align="center">
 Checking Connection to Public IP: <br/>
 
+Ping Virtual Machine from local computer to see if we can reach it over the internet. If this works then that means the attackers can do the same.
+
 ![Image](https://github.com/user-attachments/assets/59ab7ba4-2db2-4d82-8438-0545cde14023)
 
 <p align="center">
 Intentionally Failing to Login to Virtual Machine: <br/>
+
+Using the username "employ" to fail logins so that we can see this event in the local logs. 
 
 <p align="center">
 <img width="495" height="600" src="https://github.com/user-attachments/assets/1b99fb62-8b5b-4870-9208-09fb102703e6">
@@ -74,10 +84,14 @@ Viewing Security Events: <br/>
 <p align="center">
 See Logs where there were Failed Login Attempts: <br/>
 
+By searching the EventID 4625 I can see the failed logins from before, by the username "employ".
+
 ![Image](https://github.com/user-attachments/assets/7d52d606-7c35-48e2-a772-5a502e74122b)
 
 <p align="center">
 Creating Log Analytics Workspace to View Logs: <br/>
+
+Create a log repository.
 
 <p align="center">
 <img width="600" height="800" src="https://github.com/user-attachments/assets/61b8e3e0-f362-49a6-94f9-6447319bd8a0">
@@ -86,10 +100,14 @@ Creating Log Analytics Workspace to View Logs: <br/>
 <p align="center">
 Add Microsoft Sentinel to Workspace: <br/>
 
+Linking log repo to SIEM. 
+
 ![Image](https://github.com/user-attachments/assets/976d1ac7-d37d-48d9-a2ff-4309a9287664)
 
 <p align="center">
 Install Windows Security Event: <br/>
+
+This connects the Virtual Machine to the Log Analytics Workspace.
 
 ![Image](https://github.com/user-attachments/assets/14beffba-9009-4ee1-9882-d0392f4a6211)
 
@@ -108,10 +126,14 @@ Create Data Collection Rule: <br/>
 <p align="center">
 Viewing Logs: <br/>
 
+This is to check the windows logs with query "SecurityEvent".
+
 ![Image](https://github.com/user-attachments/assets/ee31de51-9644-4bb7-a7f6-39b73b9b2aaa)
 
 <p align="center">
 Using this File to Locate Where the IPs Originate from: <br/>
+
+Speadsheet of IP mapping ranges and where they are in the world.
 
 <p align="center">
 <img width="600" height="900" src="https://github.com/user-attachments/assets/d48ea81f-3e8d-4de6-ac56-c54af3dd7206">
@@ -125,6 +147,8 @@ Putting Geoip Into Watchlist: <br/>
 <p align="center">
 Wait for Geoip to Upload: <br/>
 
+This took some time because there are over 55k records. 
+
 ![Image](https://github.com/user-attachments/assets/e2cf8ec9-d5ef-4a3d-83d4-0ed86c3cb46b)
 
 <p align="center">
@@ -133,7 +157,7 @@ All Items Uploaded: <br/>
 ![Image](https://github.com/user-attachments/assets/541f7faf-683b-4449-be9e-4eb01b94e0cb)
 
 <p align="center">
-Watchlist Uploaded into Azure: <br/>
+Watchlist Uploaded into Log Analytics Workspace: <br/>
 
 ![Image](https://github.com/user-attachments/assets/44811019-0bf1-40e0-9bc1-b02f7f7b9551)
 
@@ -149,6 +173,8 @@ Query to Find Location with Longitude and Latitude: <br/>
 
 <p align="center">
 Adding JSON to Workboook: <br/>
+
+This JSON creates a map where the attacks can be mapped. Then I can see where the attacks are coming from.
 
 ![Image](https://github.com/user-attachments/assets/41a581fa-86ea-472e-a8a4-080cdea3003c)
 
